@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Forms;
 
@@ -15,6 +16,25 @@ namespace WPF
         
         App()
         {
+
+            string[] args = Environment.GetCommandLineArgs();
+
+
+            if (args.Length > 1)
+            {
+                // Assuming the first argument is the executable path
+                // and the second argument onwards are the actual parameters
+                string parameter = args[1];
+                Debug.WriteLine("Parameter received: " + args.Length +" "+ args[args.Length-1]);
+
+
+                if (args[args.Length - 1].Contains("parameter"))
+                {
+                    User32API.SendMessage((IntPtr)User32API.HWND_BROADCAST, User32API.WM_SHOWNOTI, IntPtr.Zero, IntPtr.Zero);
+
+                    App.Current.Shutdown();
+                }
+            }
 
             if (!mutex.WaitOne(TimeSpan.Zero, true))
             {

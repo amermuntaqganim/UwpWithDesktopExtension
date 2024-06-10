@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.AppService;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
+using Windows.System;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -43,7 +45,8 @@ namespace DesktopBridge
             {
                 App.AppServiceConnected += MainPage_AppServiceConnected;
                 App.AppServiceDisconnected += MainPage_AppServiceDisconnected;
-                await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync();
+                 await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync();
+
             }
 
             if (App.Connection != null)
@@ -106,6 +109,9 @@ namespace DesktopBridge
             {
                 tbResult.Text += key + " = " + response.Message[key] + "\r\n";
             }
+
+            // Show a Custom Notification in WPF
+            await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync("Parameters");
         }
 
         /// <summary>

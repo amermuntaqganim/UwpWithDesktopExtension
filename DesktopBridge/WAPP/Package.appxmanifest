@@ -57,7 +57,7 @@
 					<desktop:ParameterGroup GroupId="WinForms" Parameters="/winforms" />
 					<desktop:ParameterGroup GroupId="Win32" Parameters="/win32" />
 					<desktop:ParameterGroup GroupId="RemoteDesktop" Parameters="/mstsc" />
-					<desktop:ParameterGroup GroupId="Parameters" Parameters="/parameters" />
+					<desktop:ParameterGroup GroupId="Parameters" Parameters="parameters" />
 				</desktop:FullTrustProcess>
 
 			</desktop:Extension>

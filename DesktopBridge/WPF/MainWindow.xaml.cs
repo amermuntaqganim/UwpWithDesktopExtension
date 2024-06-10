@@ -108,6 +108,13 @@ namespace WPF
                 }
             }
 
+            if (msg == User32API.WM_SHOWNOTI)
+            {
+
+                NotificationWindow notiwindows = new NotificationWindow();
+                notiwindows.Show();
+            }
+
             return IntPtr.Zero;
         }
 
